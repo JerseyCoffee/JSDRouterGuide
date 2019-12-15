@@ -3,32 +3,77 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9B0006CDFF565E453571540 /* Pods_JSDRouterGuide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B705EC6E01571F0B7DB861 /* Pods_JSDRouterGuide.framework */; };
+		B4A0675B23A5F22100E0BBBB /* JSDAppearVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A0675A23A5F22100E0BBBB /* JSDAppearVC.m */; };
+		B4A0675E23A64C9300E0BBBB /* JSDAppearNotNeedLogInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4A0675D23A64C9300E0BBBB /* JSDAppearNotNeedLogInVC.m */; };
 		B4E17C1823A1517F00DC3E8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C1723A1517F00DC3E8C /* AppDelegate.m */; };
-		B4E17C1B23A1517F00DC3E8C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C1A23A1517F00DC3E8C /* SceneDelegate.m */; };
-		B4E17C1E23A1517F00DC3E8C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C1D23A1517F00DC3E8C /* ViewController.m */; };
-		B4E17C2123A1517F00DC3E8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4E17C1F23A1517F00DC3E8C /* Main.storyboard */; };
 		B4E17C2323A1518500DC3E8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4E17C2223A1518500DC3E8C /* Assets.xcassets */; };
 		B4E17C2623A1518500DC3E8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4E17C2423A1518500DC3E8C /* LaunchScreen.storyboard */; };
 		B4E17C2923A1518500DC3E8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C2823A1518500DC3E8C /* main.m */; };
+		B4E17C3523A153AC00DC3E8C /* JSDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C3423A153AC00DC3E8C /* JSDBaseViewController.m */; };
+		B4E17C3823A153D300DC3E8C /* JSDVCRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C3723A153D300DC3E8C /* JSDVCRouter.m */; };
+		B4E17C3B23A153EF00DC3E8C /* JSDVCRouter+Handle.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C3A23A153EF00DC3E8C /* JSDVCRouter+Handle.m */; };
+		B4E17C4723A155A800DC3E8C /* JSDRootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C4623A155A800DC3E8C /* JSDRootTabBarController.m */; };
+		B4E17C4B23A20CBD00DC3E8C /* JSDHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C4A23A20CBD00DC3E8C /* JSDHomeVC.m */; };
+		B4E17C4E23A20CC900DC3E8C /* JSDMyCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C4D23A20CC900DC3E8C /* JSDMyCenterVC.m */; };
+		B4E17C5123A20CDB00DC3E8C /* JSDCafeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C5023A20CDB00DC3E8C /* JSDCafeVC.m */; };
+		B4E17C5423A20CE700DC3E8C /* JSDLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C5323A20CE700DC3E8C /* JSDLoginVC.m */; };
+		B4E17C5723A20CF200DC3E8C /* JSDCoffeeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C5623A20CF100DC3E8C /* JSDCoffeeVC.m */; };
+		B4E17C5A23A20EEE00DC3E8C /* JSDBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C5923A20EEE00DC3E8C /* JSDBaseNavigationController.m */; };
+		B4E17C5E23A2789300DC3E8C /* JSDVCRouterConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C5D23A2789300DC3E8C /* JSDVCRouterConfig.m */; };
+		B4E17C6323A2891E00DC3E8C /* JSDRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C6223A2891E00DC3E8C /* JSDRegisterVC.m */; };
+		B4E17C6723A289FA00DC3E8C /* JSDWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C6623A289FA00DC3E8C /* JSDWebViewVC.m */; };
+		B4E17C6A23A32D1700DC3E8C /* UIViewController+JSDTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E17C6923A32D1700DC3E8C /* UIViewController+JSDTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B4E17C1323A1517F00DC3E8C /* JSDRouterGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSDRouterGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		88B705EC6E01571F0B7DB861 /* Pods_JSDRouterGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JSDRouterGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4A0675923A5F22100E0BBBB /* JSDAppearVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDAppearVC.h; sourceTree = "<group>"; };
+		B4A0675A23A5F22100E0BBBB /* JSDAppearVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDAppearVC.m; sourceTree = "<group>"; };
+		B4A0675C23A64C9300E0BBBB /* JSDAppearNotNeedLogInVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDAppearNotNeedLogInVC.h; sourceTree = "<group>"; };
+		B4A0675D23A64C9300E0BBBB /* JSDAppearNotNeedLogInVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDAppearNotNeedLogInVC.m; sourceTree = "<group>"; };
+		B4E17C1323A1517F00DC3E8C /* RouterGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouterGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E17C1623A1517F00DC3E8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B4E17C1723A1517F00DC3E8C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B4E17C1923A1517F00DC3E8C /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		B4E17C1A23A1517F00DC3E8C /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		B4E17C1C23A1517F00DC3E8C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B4E17C1D23A1517F00DC3E8C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B4E17C2023A1517F00DC3E8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4E17C2223A1518500DC3E8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4E17C2523A1518500DC3E8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4E17C2723A1518500DC3E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4E17C2823A1518500DC3E8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B4E17C3323A153AC00DC3E8C /* JSDBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDBaseViewController.h; sourceTree = "<group>"; };
+		B4E17C3423A153AC00DC3E8C /* JSDBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDBaseViewController.m; sourceTree = "<group>"; };
+		B4E17C3623A153D300DC3E8C /* JSDVCRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDVCRouter.h; sourceTree = "<group>"; };
+		B4E17C3723A153D300DC3E8C /* JSDVCRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDVCRouter.m; sourceTree = "<group>"; };
+		B4E17C3923A153EF00DC3E8C /* JSDVCRouter+Handle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSDVCRouter+Handle.h"; sourceTree = "<group>"; };
+		B4E17C3A23A153EF00DC3E8C /* JSDVCRouter+Handle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JSDVCRouter+Handle.m"; sourceTree = "<group>"; };
+		B4E17C4523A155A800DC3E8C /* JSDRootTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDRootTabBarController.h; sourceTree = "<group>"; };
+		B4E17C4623A155A800DC3E8C /* JSDRootTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDRootTabBarController.m; sourceTree = "<group>"; };
+		B4E17C4823A20B9400DC3E8C /* JSDPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDPrefixHeader.pch; sourceTree = "<group>"; };
+		B4E17C4923A20CBD00DC3E8C /* JSDHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDHomeVC.h; sourceTree = "<group>"; };
+		B4E17C4A23A20CBD00DC3E8C /* JSDHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDHomeVC.m; sourceTree = "<group>"; };
+		B4E17C4C23A20CC900DC3E8C /* JSDMyCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDMyCenterVC.h; sourceTree = "<group>"; };
+		B4E17C4D23A20CC900DC3E8C /* JSDMyCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDMyCenterVC.m; sourceTree = "<group>"; };
+		B4E17C4F23A20CDB00DC3E8C /* JSDCafeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDCafeVC.h; sourceTree = "<group>"; };
+		B4E17C5023A20CDB00DC3E8C /* JSDCafeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDCafeVC.m; sourceTree = "<group>"; };
+		B4E17C5223A20CE700DC3E8C /* JSDLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDLoginVC.h; sourceTree = "<group>"; };
+		B4E17C5323A20CE700DC3E8C /* JSDLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDLoginVC.m; sourceTree = "<group>"; };
+		B4E17C5523A20CF100DC3E8C /* JSDCoffeeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDCoffeeVC.h; sourceTree = "<group>"; };
+		B4E17C5623A20CF100DC3E8C /* JSDCoffeeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDCoffeeVC.m; sourceTree = "<group>"; };
+		B4E17C5823A20EEE00DC3E8C /* JSDBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDBaseNavigationController.h; sourceTree = "<group>"; };
+		B4E17C5923A20EEE00DC3E8C /* JSDBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDBaseNavigationController.m; sourceTree = "<group>"; };
+		B4E17C5C23A2789300DC3E8C /* JSDVCRouterConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDVCRouterConfig.h; sourceTree = "<group>"; };
+		B4E17C5D23A2789300DC3E8C /* JSDVCRouterConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDVCRouterConfig.m; sourceTree = "<group>"; };
+		B4E17C6123A2891E00DC3E8C /* JSDRegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDRegisterVC.h; sourceTree = "<group>"; };
+		B4E17C6223A2891E00DC3E8C /* JSDRegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDRegisterVC.m; sourceTree = "<group>"; };
+		B4E17C6523A289FA00DC3E8C /* JSDWebViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDWebViewVC.h; sourceTree = "<group>"; };
+		B4E17C6623A289FA00DC3E8C /* JSDWebViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDWebViewVC.m; sourceTree = "<group>"; };
+		B4E17C6823A32D1700DC3E8C /* UIViewController+JSDTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JSDTool.h"; sourceTree = "<group>"; };
+		B4E17C6923A32D1700DC3E8C /* UIViewController+JSDTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JSDTool.m"; sourceTree = "<group>"; };
+		D208B17BE31794972C824775 /* Pods-JSDRouterGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSDRouterGuide.debug.xcconfig"; path = "Target Support Files/Pods-JSDRouterGuide/Pods-JSDRouterGuide.debug.xcconfig"; sourceTree = "<group>"; };
+		F65CB3990F2F4F4025B2998F /* Pods-JSDRouterGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSDRouterGuide.release.xcconfig"; path = "Target Support Files/Pods-JSDRouterGuide/Pods-JSDRouterGuide.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,24 +81,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B0006CDFF565E453571540 /* Pods_JSDRouterGuide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33C8EC8A9AD780C3ECEC52AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D208B17BE31794972C824775 /* Pods-JSDRouterGuide.debug.xcconfig */,
+				F65CB3990F2F4F4025B2998F /* Pods-JSDRouterGuide.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AD4911A31E5B5C5E6E713F54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88B705EC6E01571F0B7DB861 /* Pods_JSDRouterGuide.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B4A0675823A5F21400E0BBBB /* Appear */ = {
+			isa = PBXGroup;
+			children = (
+				B4A0675923A5F22100E0BBBB /* JSDAppearVC.h */,
+				B4A0675A23A5F22100E0BBBB /* JSDAppearVC.m */,
+				B4A0675C23A64C9300E0BBBB /* JSDAppearNotNeedLogInVC.h */,
+				B4A0675D23A64C9300E0BBBB /* JSDAppearNotNeedLogInVC.m */,
+			);
+			path = Appear;
+			sourceTree = "<group>";
+		};
 		B4E17C0A23A1517F00DC3E8C = {
 			isa = PBXGroup;
 			children = (
 				B4E17C1523A1517F00DC3E8C /* JSDRouterGuide */,
 				B4E17C1423A1517F00DC3E8C /* Products */,
+				33C8EC8A9AD780C3ECEC52AC /* Pods */,
+				AD4911A31E5B5C5E6E713F54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		B4E17C1423A1517F00DC3E8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B4E17C1323A1517F00DC3E8C /* JSDRouterGuide.app */,
+				B4E17C1323A1517F00DC3E8C /* RouterGuide.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,19 +137,140 @@
 		B4E17C1523A1517F00DC3E8C /* JSDRouterGuide */ = {
 			isa = PBXGroup;
 			children = (
+				B4E17C5B23A2783D00DC3E8C /* Category */,
+				B4E17C3223A1539900DC3E8C /* Base */,
+				B4E17C3123A1536800DC3E8C /* Router */,
+				B4E17C3023A1534C00DC3E8C /* Moudles */,
 				B4E17C1623A1517F00DC3E8C /* AppDelegate.h */,
 				B4E17C1723A1517F00DC3E8C /* AppDelegate.m */,
-				B4E17C1923A1517F00DC3E8C /* SceneDelegate.h */,
-				B4E17C1A23A1517F00DC3E8C /* SceneDelegate.m */,
-				B4E17C1C23A1517F00DC3E8C /* ViewController.h */,
-				B4E17C1D23A1517F00DC3E8C /* ViewController.m */,
-				B4E17C1F23A1517F00DC3E8C /* Main.storyboard */,
+				B4E17C4823A20B9400DC3E8C /* JSDPrefixHeader.pch */,
 				B4E17C2223A1518500DC3E8C /* Assets.xcassets */,
 				B4E17C2423A1518500DC3E8C /* LaunchScreen.storyboard */,
 				B4E17C2723A1518500DC3E8C /* Info.plist */,
 				B4E17C2823A1518500DC3E8C /* main.m */,
 			);
 			path = JSDRouterGuide;
+			sourceTree = "<group>";
+		};
+		B4E17C3023A1534C00DC3E8C /* Moudles */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C5F23A288CF00DC3E8C /* TestRouterSkip */,
+				B4E17C4423A1554F00DC3E8C /* Coffee */,
+				B4E17C4223A154E600DC3E8C /* Cafe */,
+				B4E17C4123A154AC00DC3E8C /* MyCenter */,
+				B4E17C4023A1549300DC3E8C /* Home */,
+			);
+			path = Moudles;
+			sourceTree = "<group>";
+		};
+		B4E17C3123A1536800DC3E8C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C3623A153D300DC3E8C /* JSDVCRouter.h */,
+				B4E17C3723A153D300DC3E8C /* JSDVCRouter.m */,
+				B4E17C3923A153EF00DC3E8C /* JSDVCRouter+Handle.h */,
+				B4E17C3A23A153EF00DC3E8C /* JSDVCRouter+Handle.m */,
+				B4E17C5C23A2789300DC3E8C /* JSDVCRouterConfig.h */,
+				B4E17C5D23A2789300DC3E8C /* JSDVCRouterConfig.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B4E17C3223A1539900DC3E8C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C3323A153AC00DC3E8C /* JSDBaseViewController.h */,
+				B4E17C3423A153AC00DC3E8C /* JSDBaseViewController.m */,
+				B4E17C5823A20EEE00DC3E8C /* JSDBaseNavigationController.h */,
+				B4E17C5923A20EEE00DC3E8C /* JSDBaseNavigationController.m */,
+				B4E17C4523A155A800DC3E8C /* JSDRootTabBarController.h */,
+				B4E17C4623A155A800DC3E8C /* JSDRootTabBarController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B4E17C4023A1549300DC3E8C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C4923A20CBD00DC3E8C /* JSDHomeVC.h */,
+				B4E17C4A23A20CBD00DC3E8C /* JSDHomeVC.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B4E17C4123A154AC00DC3E8C /* MyCenter */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C4C23A20CC900DC3E8C /* JSDMyCenterVC.h */,
+				B4E17C4D23A20CC900DC3E8C /* JSDMyCenterVC.m */,
+			);
+			path = MyCenter;
+			sourceTree = "<group>";
+		};
+		B4E17C4223A154E600DC3E8C /* Cafe */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C4F23A20CDB00DC3E8C /* JSDCafeVC.h */,
+				B4E17C5023A20CDB00DC3E8C /* JSDCafeVC.m */,
+			);
+			path = Cafe;
+			sourceTree = "<group>";
+		};
+		B4E17C4323A1551400DC3E8C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C5223A20CE700DC3E8C /* JSDLoginVC.h */,
+				B4E17C5323A20CE700DC3E8C /* JSDLoginVC.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B4E17C4423A1554F00DC3E8C /* Coffee */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C5523A20CF100DC3E8C /* JSDCoffeeVC.h */,
+				B4E17C5623A20CF100DC3E8C /* JSDCoffeeVC.m */,
+			);
+			path = Coffee;
+			sourceTree = "<group>";
+		};
+		B4E17C5B23A2783D00DC3E8C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C6823A32D1700DC3E8C /* UIViewController+JSDTool.h */,
+				B4E17C6923A32D1700DC3E8C /* UIViewController+JSDTool.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B4E17C5F23A288CF00DC3E8C /* TestRouterSkip */ = {
+			isa = PBXGroup;
+			children = (
+				B4A0675823A5F21400E0BBBB /* Appear */,
+				B4E17C6423A289E900DC3E8C /* Web */,
+				B4E17C6023A288FA00DC3E8C /* Register */,
+				B4E17C4323A1551400DC3E8C /* Login */,
+			);
+			path = TestRouterSkip;
+			sourceTree = "<group>";
+		};
+		B4E17C6023A288FA00DC3E8C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C6123A2891E00DC3E8C /* JSDRegisterVC.h */,
+				B4E17C6223A2891E00DC3E8C /* JSDRegisterVC.m */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		B4E17C6423A289E900DC3E8C /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				B4E17C6523A289FA00DC3E8C /* JSDWebViewVC.h */,
+				B4E17C6623A289FA00DC3E8C /* JSDWebViewVC.m */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4E17C2C23A1518500DC3E8C /* Build configuration list for PBXNativeTarget "JSDRouterGuide" */;
 			buildPhases = (
+				6C517FA4F4568AA8DA0AD97D /* [CP] Check Pods Manifest.lock */,
 				B4E17C0F23A1517F00DC3E8C /* Sources */,
 				B4E17C1023A1517F00DC3E8C /* Frameworks */,
 				B4E17C1123A1517F00DC3E8C /* Resources */,
+				047026127EA54B4600C33695 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -93,7 +292,7 @@
 			);
 			name = JSDRouterGuide;
 			productName = JSDRouterGuide;
-			productReference = B4E17C1323A1517F00DC3E8C /* JSDRouterGuide.app */;
+			productReference = B4E17C1323A1517F00DC3E8C /* RouterGuide.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -135,35 +334,82 @@
 			files = (
 				B4E17C2623A1518500DC3E8C /* LaunchScreen.storyboard in Resources */,
 				B4E17C2323A1518500DC3E8C /* Assets.xcassets in Resources */,
-				B4E17C2123A1517F00DC3E8C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		047026127EA54B4600C33695 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSDRouterGuide/Pods-JSDRouterGuide-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JSDRouterGuide/Pods-JSDRouterGuide-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JSDRouterGuide/Pods-JSDRouterGuide-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C517FA4F4568AA8DA0AD97D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JSDRouterGuide-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B4E17C0F23A1517F00DC3E8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4E17C1E23A1517F00DC3E8C /* ViewController.m in Sources */,
+				B4E17C3523A153AC00DC3E8C /* JSDBaseViewController.m in Sources */,
+				B4E17C6323A2891E00DC3E8C /* JSDRegisterVC.m in Sources */,
+				B4E17C3823A153D300DC3E8C /* JSDVCRouter.m in Sources */,
+				B4A0675B23A5F22100E0BBBB /* JSDAppearVC.m in Sources */,
+				B4E17C5423A20CE700DC3E8C /* JSDLoginVC.m in Sources */,
+				B4E17C3B23A153EF00DC3E8C /* JSDVCRouter+Handle.m in Sources */,
+				B4E17C5123A20CDB00DC3E8C /* JSDCafeVC.m in Sources */,
 				B4E17C1823A1517F00DC3E8C /* AppDelegate.m in Sources */,
+				B4E17C6723A289FA00DC3E8C /* JSDWebViewVC.m in Sources */,
+				B4E17C4723A155A800DC3E8C /* JSDRootTabBarController.m in Sources */,
 				B4E17C2923A1518500DC3E8C /* main.m in Sources */,
-				B4E17C1B23A1517F00DC3E8C /* SceneDelegate.m in Sources */,
+				B4E17C4E23A20CC900DC3E8C /* JSDMyCenterVC.m in Sources */,
+				B4E17C5A23A20EEE00DC3E8C /* JSDBaseNavigationController.m in Sources */,
+				B4A0675E23A64C9300E0BBBB /* JSDAppearNotNeedLogInVC.m in Sources */,
+				B4E17C6A23A32D1700DC3E8C /* UIViewController+JSDTool.m in Sources */,
+				B4E17C5E23A2789300DC3E8C /* JSDVCRouterConfig.m in Sources */,
+				B4E17C5723A20CF200DC3E8C /* JSDCoffeeVC.m in Sources */,
+				B4E17C4B23A20CBD00DC3E8C /* JSDHomeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B4E17C1F23A1517F00DC3E8C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B4E17C2023A1517F00DC3E8C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B4E17C2423A1518500DC3E8C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,34 +533,38 @@
 		};
 		B4E17C2D23A1518500DC3E8C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D208B17BE31794972C824775 /* Pods-JSDRouterGuide.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2K6DTDY865;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JSDRouterGuide/JSDPrefixHeader.pch";
 				INFOPLIST_FILE = JSDRouterGuide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jerseycafe.RouterGuide.JSDRouterGuide;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jerseycafe.RouterGuide;
+				PRODUCT_NAME = RouterGuide;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		B4E17C2E23A1518500DC3E8C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F65CB3990F2F4F4025B2998F /* Pods-JSDRouterGuide.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2K6DTDY865;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/JSDRouterGuide/JSDPrefixHeader.pch";
 				INFOPLIST_FILE = JSDRouterGuide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jerseycafe.RouterGuide.JSDRouterGuide;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Jerseycafe.RouterGuide;
+				PRODUCT_NAME = RouterGuide;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

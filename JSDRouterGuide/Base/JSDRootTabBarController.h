@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  JSDRootTabBarController.h
 //  JSDRouterGuide
 //
 //  Created by Jersey on 12/12/2019.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface JSDRootTabBarController : UITabBarController
 
 @end
 
+NS_ASSUME_NONNULL_END
