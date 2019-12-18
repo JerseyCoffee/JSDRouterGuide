@@ -11,8 +11,8 @@
 @interface JSDAppearVC ()
 
 @property(nonatomic, strong) NSString *name;
-@property(nonatomic, strong) void(^callblock)(void);
-@property(nonatomic, strong) void(^callblock2)(NSString * name);
+@property(nonatomic, strong) void(^callback)(void);
+@property(nonatomic, strong) void(^callback2)(NSString * name);
 @property(nonatomic, strong) UILabel *textLabel;
 @property(nonatomic, strong) UIButton *btn;
 @property(nonatomic, strong) UIButton *btn2;
@@ -102,15 +102,15 @@
 - (void)onTouchHandle:(UIButton*)sender {
     
     if (sender.tag == 0) {
-        if (self.callblock) {
-            self.callblock();
+        if (self.callback) {
+            self.callback();
             self.handlerResultLabel.text = @"已执行回调1";
         } else {
             self.handlerResultLabel.text = @"未接收到回调函数";
         }
     } else if (sender.tag == 1) {
-        if (self.callblock2) {
-            self.callblock2(self.name);
+        if (self.callback2) {
+            self.callback2(self.name);
             self.handlerResultLabel.text = @"已执行回调2";
         } else {
             self.handlerResultLabel.text = @"未接收到回调函数";

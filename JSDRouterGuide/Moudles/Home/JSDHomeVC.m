@@ -8,8 +8,6 @@
 
 #import "JSDHomeVC.h"
 
-
-
 @interface JSDHomeVC ()
 
 @property(nonatomic, strong) UIStackView *stackView;
@@ -75,7 +73,7 @@
         make.left.mas_equalTo(self.loginStatuLabel.mas_right).mas_offset(20);
     }];
     
-    //push, modal,  pop, pop index, dismiss, 传参, callblock, newNavigation;
+    //push, modal,  pop, pop index, dismiss, 传参, callback, newNavigation;
     [self.view addSubview:self.stackView];
     [self.stackView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.loginStatuLabel.mas_bottom).mas_offset(20);
@@ -83,7 +81,7 @@
         make.trailing.mas_equalTo(-15);
     }];
     
-    _titleArray = @[@"Push 到 JSDAppearVC",@"Modal 到 JSDAppearVC",@"切换 TabBar Index 到 Cafe",@"切换 TabBar Index 到 Coffee",@"Push 到 JSDAppearVC 带参数 name",@"Modal 到 JSDAppearVC 带参数 name",@"Modal 并且让呈现的VC带导航栏",@"Callblock + 参数", @"Push 到 JSDAppearVC 不要求登陆页", @"Modal 到 JSDAppearVC 不要求登陆页",@"Modal 到 JSDAppearVC 不要求登陆页, 并指定其导航栏"];
+    _titleArray = @[@"Push 到 JSDAppearVC",@"Modal 到 JSDAppearVC",@"切换 TabBar Index 到 Cafe",@"切换 TabBar Index 到 Coffee",@"Push 到 JSDAppearVC 带参数 name",@"Modal 到 JSDAppearVC 带参数 name",@"Modal 并且让呈现的VC带导航栏",@"callback + 参数", @"Push 到 JSDAppearVC 不要求登陆页", @"Modal 到 JSDAppearVC 不要求登陆页",@"Modal 到 JSDAppearVC 不要求登陆页, 并指定其导航栏"];
     for (NSString* title in _titleArray) {
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeSystem];
         [btn setTitle:title forState:UIControlStateNormal];
@@ -117,7 +115,7 @@
 }
 
 - (void)onTouchRoute:(UIButton *)sender {
-    //Push",@"Modal",@"Pop",@"Dismiss",@"Push 带参数",@"Modal 带参数",@"Modal 并且让呈现的VC带导航栏",@"Callblock"
+    //Push",@"Modal",@"Pop",@"Dismiss",@"Push 带参数",@"Modal 带参数",@"Modal 并且让呈现的VC带导航栏",@"callback"
     switch (sender.tag) {
         case 0:{ //Push
             [JSDVCRouter openURL:JSDVCRouteAppear];
@@ -147,14 +145,14 @@
             [JSDVCRouter openURL:JSDVCRouteAppear parameters:@{kJSDVCRouteSegue: kJSDVCRouteSegueModal, kJSDVCRouteSegueNeedNavigation: @(YES)}];
         }
             break;
-        case 7:{ //Callblock + 参数
-            void (^callblock)(void) = ^{
+        case 7:{ //callback + 参数
+            void (^callback)(void) = ^{
                 NSLog(@"执行回调函数");
             };
-            void (^callblock2)(NSString *) = ^(NSString *name) {
+            void (^callback2)(NSString *) = ^(NSString *name) {
                 NSLog(@"执行回调函数2, 我是%@", name);
             };
-            [JSDVCRouter openURL:JSDVCRouteAppear parameters:@{@"name": @"Jersey", @"callblock": callblock, @"callblock2": callblock2}];
+            [JSDVCRouter openURL:JSDVCRouteAppear parameters:@{@"name": @"Jersey", @"callback": callback, @"callback2": callback2}];
         }
             break;
         case 8:{ //Push 到 JSDAppearVC 不要求登陆页

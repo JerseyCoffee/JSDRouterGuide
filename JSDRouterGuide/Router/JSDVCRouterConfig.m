@@ -48,20 +48,16 @@ NSString* const JSDVCRouteAppearNotNeedLogin = @"/home/AppearNotNeedLogin";
                              kJSDVCRouteClassTitle: @"WebView",
                              kJSDVCRouteClassFlags: @"",
                              kJSDVCRouteClassNeedLogin: @"",
-            
         },
         JSDVCRouteLogin: @{kJSDVCRouteClassName: @"JSDLoginVC",
                              kJSDVCRouteClassTitle: @"登录",
                              kJSDVCRouteClassFlags: @"",
                              kJSDVCRouteClassNeedLogin: @"",
-            
         },
         JSDVCRouteRegister: @{kJSDVCRouteClassName: @"JSDRegisterVC",
                               kJSDVCRouteClassTitle: @"注册",
                               kJSDVCRouteClassFlags: @"",
                               kJSDVCRouteClassNeedLogin: @"",
-                              
-            
         },
         JSDVCRouteAppear: @{kJSDVCRouteClassName: @"JSDAppearVC",
                               kJSDVCRouteClassTitle: @"测试OpenRouter:",
@@ -74,8 +70,6 @@ NSString* const JSDVCRouteAppearNotNeedLogin = @"/home/AppearNotNeedLogin";
                               kJSDVCRouteClassTitle: @"测试OpenRouterNotNeedLogin:",
                               kJSDVCRouteClassFlags: @"",
                               kJSDVCRouteClassNeedLogin: @"",
-                              
-            
         },
     };
 }

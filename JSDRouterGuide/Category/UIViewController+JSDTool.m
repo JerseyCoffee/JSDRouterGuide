@@ -26,13 +26,14 @@
             currentViewController = currentViewController.presentedViewController;
         } else {
             if ([currentViewController isKindOfClass:[UINavigationController class]]) {
-                currentViewController = [currentViewController.childViewControllers lastObject];
+                currentViewController = ((UINavigationController *)currentViewController).visibleViewController;
             } else if ([currentViewController isKindOfClass:[UITabBarController class]]) {
-                UITabBarController* tabBarController = (UITabBarController* )currentViewController;
-                currentViewController = tabBarController.selectedViewController;
+                currentViewController = ((UITabBarController* )currentViewController).selectedViewController;
+            } else if ([currentViewController isKindOfClass:[UISplitViewController class]]) {
+                currentViewController = currentViewController.presentingViewController;
             } else {
-                if (currentViewController.childViewControllers.count > 0) {
-                    currentViewController = [currentViewController.childViewControllers lastObject];
+                if (currentViewController.presentingViewController) {
+                    currentViewController = currentViewController.presentingViewController;
                 } else {
                     return currentViewController;
                 }

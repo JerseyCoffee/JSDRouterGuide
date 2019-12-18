@@ -29,6 +29,9 @@
         NSDictionary* routerMap = routerMapInfo[router];
         NSString* className = routerMap[kJSDVCRouteClassName];
         if (JSDIsString(className)) {
+            /*注册所有控制器 Router, 使用 [JSDVCRouter openURL:JSDVCRouteAppear]; push 到 AppearVC;
+            [JSDVCRouter openURL:JSDVCRouteAppear parameters:@{kJSDVCRouteSegue: kJSDVCRouteSegueModal, @"name": @"jersey"}];  Modal 到 Appear VC 并携带参数 name;
+             */
             [self addRoute:router handler:^BOOL(NSDictionary * _Nonnull parameters) {
                 //执行路由匹配成功之后,跳转逻辑回调;
     //            NSMutableDictionary* mapInfo = [NSMutableDictionary dictionaryWithDictionary:parameters];
@@ -46,24 +49,25 @@
         }
     }
     
-    // 注册 Router 到指定TabBar Index;
+    // 注册 Router 到指定TabBar Index; 使用 [JSDVCRouter openURL:JSDVCRouteCafeTab] 切换到 Cafe Index
     [self addRoute:@"/rootTab/:index" handler:^BOOL(NSDictionary * _Nonnull parameters) {
         NSInteger index = [parameters[@"index"] integerValue];
-        //
+        // 处理 UITabBarControllerIndex 切换;
         UITabBarController* tabBarVC = (UITabBarController* )[UIViewController jsd_rootViewController];
         if ([tabBarVC isKindOfClass:[UITabBarController class]] && index >= 0 && tabBarVC.viewControllers.count >= index) {
             UIViewController* indexVC = tabBarVC.viewControllers[index];
             if ([indexVC isKindOfClass:[UINavigationController class]]) {
                 indexVC = ((UINavigationController *)indexVC).topViewController;
             }
-            [self setupParams:parameters forViewController:indexVC];
+            //传参
+            [self setupParameters:parameters forViewController:indexVC];
             tabBarVC.selectedIndex = index;
             return YES;
         } else {
             return NO;
         }
     }];
-    
+    // 注册返回上层页面 Router, 使用 [JSDVCRouter openURL:kJSDVCRouteSegueBack] 返回上一页 或 [JSDVCRouter openURL:kJSDVCRouteSegueBack parameters:@{kJSDVCRouteBackIndex: @(2)}]  返回前两页
     [self addRoute:kJSDVCRouteSegueBack handler:^BOOL(NSDictionary * _Nonnull parameters) {
         
         return [self executeBackRouterParameters:parameters];
@@ -71,25 +75,113 @@
 }
 
 #pragma mark - execute Router VC
-
+// 当查找到指定 Router 时, 触发路由回调逻辑; 找不到已注册 Router 则直接返回 NO; 如需要的话, 也可以在这里注册一个全局未匹配到 Router 执行的回调进行异常处理;
 + (BOOL)executeRouterClassName:(NSString *)className routerMap:(NSDictionary* )routerMap parameters:(NSDictionary* )parameters {
-    
+    // 拦截 Router 映射参数,是否需要登录才可跳转;
     BOOL needLogin = [routerMap[kJSDVCRouteClassNeedLogin] boolValue];
     if (needLogin && !userIsLogin) {
         [JSDVCRouter openURL:JSDVCRouteLogin];
         return NO;
     }
-    //初始化 控制器 + 传参
-    UIViewController* vc = [self viewControllerWithClassName:className routerMap:parameters parameters: parameters];
+    //统一初始化控制器,传参和跳转;
+    UIViewController* vc = [self viewControllerWithClassName:className routerMap:routerMap parameters: parameters];
     if (vc) {
         [self gotoViewController:vc parameters:parameters];
         return YES;
     } else {
-        
         return NO;
     }
 }
+// 根据 Router 映射到的类名实例化控制器;
++ (UIViewController *)viewControllerWithClassName:(NSString *)className routerMap:(NSDictionary *)routerMap parameters:(NSDictionary* )parameters {
+    
+    id vc = [[NSClassFromString(className) alloc] init];
+    if (![vc isKindOfClass:[UIViewController class]]) {
+        vc = nil;
+    }
+#if DEBUG
+    //vc不是UIViewController
+    NSAssert(vc, @"%s: %@ is not kind of UIViewController class, routerMap: %@",__func__ ,className, routerMap);
+#endif
+    //参数赋值
+    [self setupParameters:parameters forViewController:vc];
+    
+    return vc;
+}
+// 对 VC 参数赋值
++ (void)setupParameters:(NSDictionary *)params forViewController:(UIViewController* )vc {
+    
+    for (NSString *key in params.allKeys) {
+        BOOL hasKey = [vc respondsToSelector:NSSelectorFromString(key)];
+        BOOL notNil = params[key] != nil;
+        if (hasKey && notNil) {
+            [vc setValue:params[key] forKey:key];
+        }
+        
+#if DEBUG
+    //vc没有相应属性，但却传了值
+        if ([key hasPrefix:@"JLRoute"]==NO &&
+            [key hasPrefix:@"JSDVCRoute"]==NO && [params[@"JLRoutePattern"] rangeOfString:[NSString stringWithFormat:@":%@",key]].location==NSNotFound) {
+            NSAssert(hasKey == YES, @"%s: %@ is not property for the key %@",__func__ ,vc,key);
+        }
+#endif
+    };
+}
+// 跳转和参数设置;
++ (void)gotoViewController:(UIViewController *)vc parameters:(NSDictionary *)parameters {
+    
+    UIViewController* currentVC = [UIViewController jsd_findVisibleViewController];
+    NSString *segue = parameters[kJSDVCRouteSegue] ? parameters[kJSDVCRouteSegue] : kJSDVCRouteSeguePush; //  决定 present 或者 Push; 默认值 Push
+    BOOL animated = parameters[kJSDVCRouteAnimated] ? [parameters[kJSDVCRouteAnimated] boolValue] : YES;  // 转场动画;
+    NSLog(@"%s 跳转: %@ %@ %@",__func__ ,currentVC, segue,vc);
+    
+    if ([segue isEqualToString:kJSDVCRouteSeguePush]) { //PUSH
+        if (currentVC.navigationController) {
+            NSString *backIndexString = [NSString stringWithFormat:@"%@",parameters[kJSDVCRouteBackIndex]];
+            UINavigationController* nav = currentVC.navigationController;
+            if ([backIndexString isEqualToString:kJSDVCRouteIndexRoot]) {
+                NSMutableArray *vcs = [NSMutableArray arrayWithObject:nav.viewControllers.firstObject];
+                [vcs addObject:vc];
+                [nav setViewControllers:vcs animated:animated];
+                
+            } else if ([backIndexString integerValue] && [backIndexString integerValue] < nav.viewControllers.count) {
+                //移除掉指定数量的 VC, 在Push;
+                NSMutableArray *vcs = [nav.viewControllers mutableCopy];
+                [vcs removeObjectsInRange:NSMakeRange(vcs.count - [backIndexString integerValue], [backIndexString integerValue])];
+                nav.viewControllers = vcs;
+                [nav pushViewController:vc animated:YES];
+            } else {
+                [nav pushViewController:vc animated:animated];
+            }
+        }
+        else { //由于无导航栏, 直接执行 Modal
+            BOOL needNavigation = parameters[kJSDVCRouteSegueNeedNavigation] ? NO : YES;
+            if (needNavigation) {
+                UINavigationController* navigationVC = [[UINavigationController alloc] initWithRootViewController:vc];
+                //vc.modalPresentationStyle = UIModalPresentationFullScreen;
+                [currentVC presentViewController:navigationVC animated:YES completion:nil];
+            }
+            else {
+                //vc.modalPresentationStyle = UIModalPresentationFullScreen;
+                [currentVC presentViewController:vc animated:animated completion:nil];
+            }
+        }
+    }
+    else { //Modal
+        BOOL needNavigation = parameters[kJSDVCRouteSegueNeedNavigation] ? parameters[kJSDVCRouteSegueNeedNavigation] : NO;
+        if (needNavigation) {
+            UINavigationController* navigationVC = [[UINavigationController alloc] initWithRootViewController:vc];
+            //vc.modalPresentationStyle = UIModalPresentationFullScreen;
+            [currentVC presentViewController:navigationVC animated:animated completion:nil];
+        }
+        else {
+            //vc.modalPresentationStyle = UIModalPresentationFullScreen;
+            [currentVC presentViewController:vc animated:animated completion:nil];
+        }
+    }
+}
 
+// 返回上层页面回调;
 + (BOOL)executeBackRouterParameters:(NSDictionary *)parameters {
     BOOL animated = parameters[kJSDVCRouteAnimated] ? [parameters[kJSDVCRouteAnimated] boolValue] : YES;
     NSString *backIndexString = parameters[kJSDVCRouteBackIndex] ? [NSString stringWithFormat:@"%@",parameters[kJSDVCRouteBackIndex]] : nil;  // 指定返回个数, 优先处理此参数;
@@ -159,97 +251,5 @@
     }
     return NO;
 }
-
-+ (UIViewController *)viewControllerWithClassName:(NSString *)className routerMap:(NSDictionary *)routerMap parameters:(NSDictionary* )parameters {
-    
-    id vc = [[NSClassFromString(className) alloc] init];
-    if (![vc isKindOfClass:[UIViewController class]]) {
-        vc = nil;
-    }
-#if DEBUG
-    //vc不是UIViewController
-    NSAssert(vc, @"%s: %@ is not kind of UIViewController class, routerMap: %@",__func__ ,className, routerMap);
-#endif
-    [self setupParams:parameters forViewController:vc];
-    
-    return vc;
-}
-
-+ (void)setupParams:(NSDictionary *)params forViewController:(UIViewController* )vc {
-    
-    for (NSString *key in params.allKeys) {
-        BOOL hasKey = [vc respondsToSelector:NSSelectorFromString(key)];
-        BOOL notNil = params[key] != nil;
-        if (hasKey && notNil) {
-            [vc setValue:params[key] forKey:key];
-        }
-        
-#if DEBUG
-    //vc没有相应属性，但却传了值。
-        if ([key hasPrefix:@"JLRoute"]==NO &&
-            [key hasPrefix:@"JSDVCRoute"]==NO && [params[@"JLRoutePattern"] rangeOfString:[NSString stringWithFormat:@":%@",key]].location==NSNotFound) {
-            NSAssert(hasKey == YES, @"%s: %@ is not property for the key %@",__func__ ,vc,key);
-        }
-#endif
-    };
-}
-
-+ (void)gotoViewController:(UIViewController *)vc parameters:(NSDictionary *)parameters {
-    
-    UIViewController* currentVC = [UIViewController jsd_findVisibleViewController];
-    NSString *segue = parameters[kJSDVCRouteSegue] ? parameters[kJSDVCRouteSegue] : kJSDVCRouteSeguePush; //  决定 present 或者 Push; 默认值 Push
-    BOOL animated = parameters[kJSDVCRouteAnimated] ? [parameters[kJSDVCRouteAnimated] boolValue] : YES;  // 转场动画;
-    NSLog(@"%s 跳转: %@ %@ %@",__func__ ,currentVC, segue,vc);
-    
-    if ([segue isEqualToString:kJSDVCRouteSeguePush]) { //PUSH
-        if (currentVC.navigationController) {
-            NSString *backIndexString = [NSString stringWithFormat:@"%@",parameters[kJSDVCRouteBackIndex]];
-            UINavigationController* nav = currentVC.navigationController;
-            if ([backIndexString isEqualToString:kJSDVCRouteIndexRoot]) {
-                NSMutableArray *vcs = [NSMutableArray arrayWithObject:nav.viewControllers.firstObject];
-                [vcs addObject:vc];
-                [nav setViewControllers:vcs animated:animated];
-                
-            } else if ([backIndexString integerValue] && [backIndexString integerValue] < nav.viewControllers.count) {
-                //移除掉指定数量的 VC, 在Push;
-                NSMutableArray *vcs = [nav.viewControllers mutableCopy];
-                [vcs removeObjectsInRange:NSMakeRange(vcs.count - [backIndexString integerValue], [backIndexString integerValue])];
-                nav.viewControllers = vcs;
-                [nav pushViewController:vc animated:YES];
-            } else {
-                [nav pushViewController:vc animated:animated];
-            }
-        }
-        else { //由于无导航栏, 直接执行 Modal
-            BOOL needNavigation = parameters[kJSDVCRouteSegueNeedNavigation] ? NO : YES;
-            if (needNavigation) {
-                UINavigationController* navigationVC = [[UINavigationController alloc] initWithRootViewController:vc];
-                //vc.modalPresentationStyle = UIModalPresentationFullScreen;
-                [currentVC presentViewController:navigationVC animated:YES completion:nil];
-            }
-            else {
-                //vc.modalPresentationStyle = UIModalPresentationFullScreen;
-                [currentVC presentViewController:vc animated:animated completion:nil];
-            }
-        }
-    }
-    else { //Modal
-        BOOL needNavigation = parameters[kJSDVCRouteSegueNeedNavigation] ? parameters[kJSDVCRouteSegueNeedNavigation] : NO;
-        if (needNavigation) {
-            UINavigationController* navigationVC = [[UINavigationController alloc] initWithRootViewController:vc];
-            //vc.modalPresentationStyle = UIModalPresentationFullScreen;
-            [currentVC presentViewController:navigationVC animated:animated completion:nil];
-        }
-        else {
-            //vc.modalPresentationStyle = UIModalPresentationFullScreen;
-            [currentVC presentViewController:vc animated:animated completion:nil];
-        }
-    }
-    
-}
-
-
-
-
 
 @end
