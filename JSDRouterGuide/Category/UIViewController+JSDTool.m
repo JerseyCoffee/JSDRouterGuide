@@ -29,14 +29,8 @@
                 currentViewController = ((UINavigationController *)currentViewController).visibleViewController;
             } else if ([currentViewController isKindOfClass:[UITabBarController class]]) {
                 currentViewController = ((UITabBarController* )currentViewController).selectedViewController;
-            } else if ([currentViewController isKindOfClass:[UISplitViewController class]]) {
-                currentViewController = currentViewController.presentingViewController;
             } else {
-                if (currentViewController.presentingViewController) {
-                    currentViewController = currentViewController.presentingViewController;
-                } else {
-                    return currentViewController;
-                }
+                break;
             }
         }
     }

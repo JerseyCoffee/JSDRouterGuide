@@ -16,6 +16,8 @@
 @property(nonatomic, strong) UILabel *textLabel;
 @property(nonatomic, strong) UIButton *btn;
 @property(nonatomic, strong) UIButton *btn2;
+@property(nonatomic, strong) UIButton *btn3;
+@property(nonatomic, strong) UIButton *btn4;
 @property(nonatomic, strong) UILabel *handlerResultLabel;
 @property(nonatomic, strong) UILabel *testPushPopIndex;
 @property(nonatomic, strong) UIButton *pushButton;
@@ -76,6 +78,18 @@
         make.top.mas_equalTo(self.btn2.mas_bottom).mas_equalTo(50);
     }];
     
+    [self.view addSubview:self.btn3];
+    [self.btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(0);
+        make.top.mas_equalTo(self.handlerResultLabel.mas_bottom).mas_equalTo(25);
+    }];
+    
+    [self.view addSubview:self.btn4];
+    [self.btn4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(0);
+        make.top.mas_equalTo(self.btn3.mas_bottom).mas_equalTo(25);
+    }];
+    
     [self reloadingView];
 }
 
@@ -115,6 +129,10 @@
         } else {
             self.handlerResultLabel.text = @"未接收到回调函数";
         }
+    } else if (sender.tag == 2) {
+        [JSDVCRouter openURL:JSDVCRouteAppear];
+    } else if (sender.tag == 3) {
+        [JSDVCRouter openURL:JSDVCRouteAppear parameters:@{kJSDVCRouteSegue: kJSDVCRouteSegueModal}];
     }
 }
 
@@ -163,6 +181,28 @@
         [_btn2 addTarget:self action:@selector(onTouchHandle:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btn2;
+}
+
+- (UIButton *)btn3 {
+    
+    if (!_btn3) {
+        _btn3 = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_btn3 setTitle:@"Push到下一个 AppearVC" forState:UIControlStateNormal];
+        _btn3.tag = 2;
+        [_btn3 addTarget:self action:@selector(onTouchHandle:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btn3;
+}
+
+- (UIButton *)btn4 {
+    
+    if (!_btn4) {
+        _btn4 = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_btn4 setTitle:@"Modal到下一个 AppearVC" forState:UIControlStateNormal];
+        _btn4.tag = 3;
+        [_btn4 addTarget:self action:@selector(onTouchHandle:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btn4;
 }
 
 - (UILabel *)handlerResultLabel {
