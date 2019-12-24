@@ -20,4 +20,4 @@ App 外跳转则包含 Scheme 启动, 3D Touch, UniversalLink, 点击通知等�
 
 **后续会继续更新文章和代码,让 Router 完善起来!**
 
-Blog 传送门: [简书](https://www.jianshu.com/p/c1714707c065)
+Blog 传送门: [掘金](https://juejin.im/post/5dfb2540f265da33942a8783)
